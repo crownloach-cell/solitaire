@@ -156,7 +156,7 @@ select,button{font:inherit;padding:5px 6px;border-radius:6px;border:0}
 /* TriPeaks (#tp): FreeCell card styles; face-down peak cards use the shared card back; the stock and waste are drawn larger */
 #tp{height:100%;display:flex;flex-direction:column}
 #tp-top{display:flex;gap:4px;padding:4px;align-items:center;font-size:12px;flex-wrap:wrap}#tp-info{margin-left:auto;font-size:12px}
-#tp-board{flex:1;position:relative;min-height:0;overflow:hidden;touch-action:manipulation}
+#tp-board{flex:1;position:relative;min-height:0;overflow:hidden;touch-action:none}   /* like the other boards: no pinch-zoom / panning of the field (taps still arrive as clicks) */
 #tp-menu{display:flex;gap:4px;padding:6px}#tp-menu button{flex:1;padding:12px 0;font-size:13px}
 .fc-cd.tp{padding:1px 2px}.fc-cd.tp .sb,.fc-cd.tp .pfr{display:none}.fc-cd.tp.wt .sb,.fc-cd.tp.wt .pfr{display:block}
 .tp-sk .fc-cd.dn{top:0;height:100%;right:auto;box-shadow:inset 0 0 0 1.5px #efe9da,inset 0 0 0 2.5px rgba(16,30,80,.9),1px 0 2px rgba(0,0,0,.35)}
@@ -1115,7 +1115,7 @@ function startLevel(g,lv){try{history.pushState({sp:2},'')}catch(e){}GAMES[g].en
 ['spider','freecell','klondike','pyramid','tripeaks'].forEach(g=>{const b=$('g-'+g);if(b)b.onclick=()=>pickGame(g);const t=$('st-'+g);if(t)t.onclick=()=>{if(GAMES[g]&&GAMES[g].stats)GAMES[g].stats()}});
 ['mn','fc-mn','kl-mn','py-mn','tp-mn'].forEach(id=>{const b=$(id);if(b)b.onclick=()=>goRoot()});
 /* build version (date and a hash of the sources), filled in by build.py; shown at the bottom of the options */
-const APP_VER='2026-11-27 #e5cc2b';
+const APP_VER='2026-11-27 #09fae4';
 /* options (top screen): settings shared by every game. Vibration: a switch; turning it on gives one short buzz as a sample. */
 function showOptions(){
  const sw=(k,label)=>{const on=!!opts()[k];return'<div class="opt"><span>'+label+'</span><button id="o-'+k+'" class="tg'+(on?' on':'')+'" role="switch" aria-checked="'+on+'" aria-label="'+label+'"><i></i></button><span id="o-'+k+'-t">'+(on?'入':'切')+'</span></div>'};
